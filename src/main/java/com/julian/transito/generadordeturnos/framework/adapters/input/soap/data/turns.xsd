@@ -1,0 +1,47 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+
+    <xs:element name="FindTurnRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="documentType" type="xs:string"/>
+                <xs:element name="documentNumber" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ScheduleTurnRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="documentType" type="xs:string" />
+                <xs:element name="documentNumber" type="xs:string"/>
+                <xs:element name="turnId" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetListAvailableTurnsRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="TurnResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="turnResponse" type="tns:turnData" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="turnData">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="processType" type="xs:string"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="code" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
